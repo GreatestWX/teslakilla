@@ -8,6 +8,16 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <style>
+      body {
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+        -moz-user-select: -moz-none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background: url(https://upload.wikimedia.org/wikipedia/commons/f/fa/Lightning_simulator_questacon02.jpg) no-repeat center center fixed;
+        color: white;
+      }
       div {
         display: flex;
       }
@@ -30,10 +40,13 @@
         display: flex;
         justify-content: center;
       }
+      h1>span {
+        font-size: 1rem;
+      }
     </style>
   </head>
   <body>
-    <h1>Tesla Killa</h1>
+    <h1>Tesla Killa <span>by GreatestWX<span></h1>
     <div>
       <button class="btn white key" data-freq="261">C</button>
       <button class="btn black key" data-freq="277">C#</button>
@@ -48,6 +61,18 @@
       <button class="btn black key" data-freq="466">A#</button>
       <button class="btn white key" data-freq="493">B</button>
       <button class="btn white key" data-freq="523">C</button>
+      <button class="btn black key" data-freq="554">C#</button>
+      <button class="btn white key" data-freq="587">D</button>
+      <button class="btn black key" data-freq="622">D#</button>
+      <button class="btn white key" data-freq="659">E</button>
+      <button class="btn white key" data-freq="698">F</button>
+      <button class="btn black key" data-freq="739">F#</button>
+      <button class="btn white key" data-freq="783">G</button>
+      <button class="btn black key" data-freq="830">G#</button>
+      <button class="btn white key" data-freq="880">A</button>
+      <button class="btn black key" data-freq="932">A#</button>
+      <button class="btn white key" data-freq="987">B</button>
+      <button class="btn white key" data-freq="1046">C</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
