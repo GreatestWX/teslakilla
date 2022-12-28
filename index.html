@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+      div {
+        display: flex;
+      }
+      .btn {
+          height: 200px;
+          width: 60px;
+          font-size: .7em;
+      }
+      .black {
+        height: 150px;
+        width:40px;
+        margin-left: -20px;
+        margin-right: -20px;
+        z-index: 5;
+      }
+      .white {
+        color: black;
+      }
+      .key {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tesla Killa</h1>
+    <div>
+      <button class="btn white key" data-freq="261">C</button>
+      <button class="btn black key" data-freq="277">C#</button>
+      <button class="btn white key" data-freq="293">D</button>
+      <button class="btn black key" data-freq="311">D#</button>
+      <button class="btn white key" data-freq="329">E</button>
+      <button class="btn white key" data-freq="349">F</button>
+      <button class="btn black key" data-freq="369">F#</button>
+      <button class="btn white key" data-freq="392">G</button>
+      <button class="btn black key" data-freq="415">G#</button>
+      <button class="btn white key" data-freq="440">A</button>
+      <button class="btn black key" data-freq="466">A#</button>
+      <button class="btn white key" data-freq="493">B</button>
+      <button class="btn white key" data-freq="523">C</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+
+const audioCtx = new AudioContext();
+
+const gain = audioCtx.createGain();
+gain.gain.value = 1;
+gain.connect(audioCtx.destination);
+
+const keys = document.querySelectorAll(".key");
+
+keys.forEach((key) => {
+  const freq = key.dataset.freq
+  key.onmousedown = () => {
+    const oscillator = audioCtx.createOscillator();
+    oscillator.type = 'square';
+    oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    oscillator.connect(gain);
+    oscillator.start();
+    key.onmouseup = () => {
+      oscillator.stop();
+    }
+  }
+  key.ontouchstart = () => {
+    const oscillator = audioCtx.createOscillator();
+    oscillator.type = 'square';
+    oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    oscillator.connect(gain);
+    oscillator.start();
+    key.ontouchend = () => {
+      oscillator.stop();
+    }
+  }
+});
+
+    </script>
+  </body>
+</html>
